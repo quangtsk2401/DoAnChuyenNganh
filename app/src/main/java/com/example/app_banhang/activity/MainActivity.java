@@ -16,8 +16,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -55,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     ApiBanHang apiBanHang;
     List<SanPhamMoi> mangSpMoi;
     SanPhamMoiAdapter spAdapter;
-
+    FrameLayout frameLayout;
+    TextView txtdangky,txtdangnhap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Không có kết nối, vui lòng kết nối Internet", Toast.LENGTH_LONG).show();
         }
     }
-
     private void getEventClick() {
         listViewmanhinhchinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -201,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Anhxa() {
+        txtdangky = findViewById(R.id.maindangky);
+        txtdangnhap = findViewById(R.id.maindangnhap);
         toolbar = findViewById(R.id.toolbarmhc);
         badge = findViewById(R.id.menu_sl);
         drawerLayout = findViewById(R.id.drawerlayoutmhc);
@@ -211,12 +215,41 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewmanhinhchinh.setHasFixedSize(true);
         navigationView = findViewById(R.id.navigationviewmhc);
         listViewmanhinhchinh = findViewById(R.id.listviewmhc);
+        badge = findViewById(R.id.menu_sl);
+        frameLayout = findViewById(R.id.frame_giohang);
         mangloaisp = new ArrayList<>();
         mangSpMoi = new ArrayList<>();
         if (Utils.manggiohang == null){
             Utils.manggiohang = new ArrayList<>();
         }
-
+        else {
+                int totalItem =0;
+                for (int i = 0; i < Utils.manggiohang.size(); i++){
+                    totalItem= totalItem + Utils.manggiohang.get(i).getSoluong();
+                }
+                badge.setText(String.valueOf(Utils.manggiohang.size()));
+        }
+        frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent giohang = new Intent(getApplicationContext(), GioHangActivity.class);
+                startActivity(giohang);
+            }
+        });
+        txtdangky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DangKyActivity.class);
+                startActivity(intent);
+            }
+        });
+        txtdangnhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

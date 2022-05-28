@@ -9,6 +9,7 @@ import retrofit2.http.POST;
 import com.example.app_banhang.model.LoaiSpModel;
 import com.example.app_banhang.model.SanPhamMoi;
 import com.example.app_banhang.model.SanPhamMoiModel;
+import com.example.app_banhang.model.UserModel;
 
 public interface ApiBanHang {
     @GET("getloaisp.php")
@@ -22,6 +23,14 @@ public interface ApiBanHang {
     Observable<SanPhamMoiModel> getSanPham(
             @Field("page") int page,
             @Field("loai") int loai
+    );
+    @POST("dangky.php")
+    @FormUrlEncoded
+    Observable<UserModel> dangky(
+            @Field("tendangnhap") String tendangnhap,
+            @Field("password") String password,
+            @Field("username") String username,
+            @Field("sdt") String sdt
     );
 
 }

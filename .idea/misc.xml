@@ -9,15 +9,18 @@
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/drawable/spinner.xml" value="0.1645" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_chi_tiet.xml" value="0.31927083333333334" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_chitiet.xml" value="0.33" />
+        <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_dang_ky.xml" value="0.33" />
+        <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_dang_nhap.xml" value="0.25" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_gear.xml" value="0.31927083333333334" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_gio_hang.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_info.xml" value="0.31927083333333334" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_laptop.xml" value="0.31875" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_lien_he.xml" value="0.31927083333333334" />
+        <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_linhkien.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_phone.xml" value="0.31927083333333334" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/activity_usbactivity.xml" value="0.31927083333333334" />
-        <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/item_giohang.xml" value="0.33" />
+        <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/item_giohang.xml" value="0.25" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/item_loading.xml" value="0.31875" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/item_phone.xml" value="0.31927083333333334" />
         <entry key="..\:/Users/quang/Desktop/App_BanHang/app/src/main/res/layout/item_sanpham.xml" value="0.33" />

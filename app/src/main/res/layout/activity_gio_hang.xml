@@ -10,14 +10,14 @@
         android:id="@+id/txtgiohangtrong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
+        android:gravity="center"
         android:text="Giỏ hàng của bạn còn trống"
-        android:textSize="30dp"
         android:textColor="#FF00"
-        android:visibility="gone"
-        android:gravity="center" />
-
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/layout1"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/layout2">
-
         <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -48,7 +47,6 @@
             android:text="Tổng thanh toán: "
             android:textSize="20dp"
             android:padding="5dp"/>
-
         <TextView
             android:layout_weight="1"
             android:id="@+id/txttongtien"

@@ -40,7 +40,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
         if(viewType == VIEW_TYPE_DATA)
         {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phone, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sanpham, parent, false);
             return new MyViewHolder(view);
         }
         else

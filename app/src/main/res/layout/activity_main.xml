@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerlayoutmhc"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarmhc"
                 android:layout_width="match_parent"
@@ -32,12 +30,12 @@
                         android:id="@+id/menu_sl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"></com.nex3z.notificationbadge.NotificationBadge>
+                        android:layout_gravity="right" />
                     <ImageView
                         android:layout_width="49dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="15dp"
-                        android:src="@drawable/ic_baseline_shopping_cart_24"></ImageView>
+                        android:src="@drawable/ic_baseline_shopping_cart_24" />
                 </FrameLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -49,11 +47,38 @@
                     android:textSize="25dp"
                     android:textStyle="bold" />
             </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:id="@+id/dangnhapdangky"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#FFFF">
+                <TextView
+                    android:id="@+id/maindangnhap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đăng nhập"
+                    android:textStyle="bold"
+                    android:textColor="#FF1F1F"
+                    android:layout_marginStart="130dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="hoặc" />
+                <TextView
+                    android:id="@+id/maindangky"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đăng ký"
+                    android:textStyle="bold"
+                    android:textColor="#FF1F1F"/>
+            </LinearLayout>
             <ViewFlipper
                 android:id="@+id/viewflippermhc"
                 android:layout_width="match_parent"
                 android:layout_height="150dp">
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -63,7 +88,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:background="#FFFFFF">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,7 +95,6 @@
                     android:text="Sản phẩm đang HOT"
                     android:textSize="20dp"
                     android:textStyle="bold" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerviewmhc"
                     android:layout_width="match_parent"
@@ -84,7 +107,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start">
-
             <ListView
                 android:id="@+id/listviewmhc"
                 android:layout_width="match_parent"

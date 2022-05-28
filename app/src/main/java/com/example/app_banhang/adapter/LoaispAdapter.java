@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.app_banhang.R;
 import com.example.app_banhang.model.LoaiSP;
 
@@ -47,7 +46,7 @@ public class LoaispAdapter extends BaseAdapter{
         if(view == null){
             viewHolder =new ViewHolder();
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.item_sanpham, null);
+            view = layoutInflater.inflate(R.layout.item_loaisanpham, null);
             viewHolder.texttensp = view.findViewById(R.id.item_tensp);
             view.setTag(viewHolder);
         }
