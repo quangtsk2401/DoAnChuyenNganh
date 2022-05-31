@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.example.app_banhang.adapter.LoaispAdapter;
 import com.example.app_banhang.adapter.SanPhamMoiAdapter;
 import com.example.app_banhang.model.LoaiSP;
 import com.example.app_banhang.model.SanPhamMoi;
+import com.example.app_banhang.model.UserModel;
 import com.example.app_banhang.retrofit.ApiBanHang;
 import com.example.app_banhang.retrofit.RetrofitClient;
 import com.example.app_banhang.ultil.Utils;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     SanPhamMoiAdapter spAdapter;
     FrameLayout frameLayout;
     TextView txtdangky,txtdangnhap;
+    LinearLayout dangnhapdangky;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewmanhinhchinh.setHasFixedSize(true);
         navigationView = findViewById(R.id.navigationviewmhc);
         listViewmanhinhchinh = findViewById(R.id.listviewmhc);
+        dangnhapdangky = findViewById(R.id.dangnhapdangky);
         badge = findViewById(R.id.menu_sl);
         frameLayout = findViewById(R.id.frame_giohang);
         mangloaisp = new ArrayList<>();
@@ -236,6 +240,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(giohang);
             }
         });
+        if (Utils.user_current.getTendangnhap() != null)
+        {
+            dangnhapdangky.setVisibility(View.GONE);
+        }
         txtdangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

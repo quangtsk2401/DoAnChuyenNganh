@@ -3,6 +3,7 @@ package com.example.app_banhang.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -44,15 +45,14 @@ public class DangKyActivity extends AppCompatActivity {
 
             private void dangKy() {
                 String str_tendangky= tendangky.getText().toString().trim();
-                String str_password= matkhaudangky.getText().toString().trim();
-                String str_nhaplaimatkhau= nhaplaimatkhau.getText().toString().trim();
-                String str_sodienthoai= sodienthoai.getText().toString().trim();
+                String str_matkhaudangky = matkhaudangky.getText().toString().trim();
+                String str_nhaplaimatkhau = nhaplaimatkhau.getText().toString().trim();
+                String str_sodienthoai = sodienthoai.getText().toString().trim();
                 String str_username= username.getText().toString().trim();
                 if (TextUtils.isEmpty(str_tendangky)){
                     Toast.makeText(getApplicationContext(),"Bạn chưa nhập tên tài khoản!", Toast.LENGTH_LONG).show();
-                }
-                else
-                    if(TextUtils.isEmpty(str_password)){
+                } else
+                    if(TextUtils.isEmpty(str_matkhaudangky)){
                         Toast.makeText(getApplicationContext(),"Bạn chưa nhập mật khẩu!", Toast.LENGTH_LONG).show();
                     } else if(TextUtils.isEmpty(str_nhaplaimatkhau)){
                         Toast.makeText(getApplicationContext(),"Bạn chưa nhập lại mật khẩu!", Toast.LENGTH_LONG).show();
@@ -61,14 +61,19 @@ public class DangKyActivity extends AppCompatActivity {
                     } else if(TextUtils.isEmpty(str_sodienthoai)){
                         Toast.makeText(getApplicationContext(),"Bạn chưa nhập số điện thoại!", Toast.LENGTH_LONG).show();
                     } else {
-                        if (str_password.equals(str_nhaplaimatkhau)){
-                            compositeDisposable.add(apiBanHang.dangky(str_username,str_tendangky, str_password, str_sodienthoai)
+                        if (str_matkhaudangky.equals(str_nhaplaimatkhau)){
+                            compositeDisposable.add(apiBanHang.dangky(str_tendangky, str_matkhaudangky,str_username, str_sodienthoai)
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(
                                             userModel -> {
                                                 if (userModel.isSuccess()){
                                                     Toast.makeText(getApplicationContext(),"Đăng ký thành công", Toast.LENGTH_LONG).show();
+                                                    Utils.user_current.setTendangnhap(str_tendangky);
+                                                    Utils.user_current.setPassword(str_matkhaudangky);
+                                                    Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
                                                 }
                                                 else {
                                                     Toast.makeText(getApplicationContext(),userModel.getMessage(), Toast.LENGTH_LONG).show();

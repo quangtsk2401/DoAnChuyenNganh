@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#C66BED81"
     android:orientation="vertical"
     tools:context=".activity.DangNhapActivity">
     <ImageView
@@ -36,7 +36,7 @@
                 android:id="@+id/edt_tendangky"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tên đăng nhập" />
+                android:hint="Email" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             app:counterEnabled="true"

@@ -11,13 +11,13 @@ if (!empty($result))
 {
 	$arr = ['success'=> true,
 			'message'=> "Thanhcong",
-			'result'=>$result];
+			'result'=> $result];
 }
 else
 {
 	$arr = ['success'=> false,
 			'message'=> "That bai",
-			'result'=>$result];
+			'result'=> $result];
 }
 print(json_encode($arr));
 ?>

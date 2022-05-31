@@ -12,12 +12,13 @@ import com.example.app_banhang.model.SanPhamMoiModel;
 import com.example.app_banhang.model.UserModel;
 
 public interface ApiBanHang {
+    // Lấy dữ liệu trên SQL về
     @GET("getloaisp.php")
     Observable<LoaiSpModel> getLoaiSp();
 
     @GET("getspmoi.php")
     Observable<SanPhamMoiModel> getSpMoi();
-
+    //Đưa dữ liệu từ app lên SQL
     @POST("chitiet.php")
     @FormUrlEncoded
     Observable<SanPhamMoiModel> getSanPham(
@@ -32,5 +33,15 @@ public interface ApiBanHang {
             @Field("username") String username,
             @Field("sdt") String sdt
     );
-
+    @POST("dangnhap.php")
+    @FormUrlEncoded
+    Observable<UserModel> dangNhap(
+            @Field("tendangnhap") String tendangnhap,
+            @Field("password") String password
+    );
+    @POST("resetpass.php")
+    @FormUrlEncoded
+    Observable<UserModel> resetpass(
+            @Field("tendangnhap") String tendangnhap
+    );
 }

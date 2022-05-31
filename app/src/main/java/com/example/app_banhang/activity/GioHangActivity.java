@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.app_banhang.R;
 import com.example.app_banhang.adapter.GioHangAdapter;
@@ -85,6 +86,13 @@ public class GioHangActivity extends AppCompatActivity {
             adapter = new GioHangAdapter(getApplicationContext(), Utils.manggiohang);
             recyclerView.setAdapter(adapter);
         }
+        thanhtoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @SuppressLint("WrongViewCast")
