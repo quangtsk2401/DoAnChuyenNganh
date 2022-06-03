@@ -30,6 +30,7 @@ import com.example.app_banhang.adapter.LoaispAdapter;
 import com.example.app_banhang.adapter.SanPhamMoiAdapter;
 import com.example.app_banhang.model.LoaiSP;
 import com.example.app_banhang.model.SanPhamMoi;
+import com.example.app_banhang.model.User;
 import com.example.app_banhang.model.UserModel;
 import com.example.app_banhang.retrofit.ApiBanHang;
 import com.example.app_banhang.retrofit.RetrofitClient;
@@ -40,6 +41,7 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -61,12 +63,18 @@ public class MainActivity extends AppCompatActivity {
     SanPhamMoiAdapter spAdapter;
     FrameLayout frameLayout;
     TextView txtdangky,txtdangnhap, dangxuat, dangnhapdangky;
+    ImageView imgsearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         apiBanHang = RetrofitClient.getInstance(Utils.BASE_URL).create(ApiBanHang.class);
+        Paper.init(this);
+        if (Paper.book().read("User") != null){
+            User user = Paper.book().read("User");
+            Utils.user_current = user;
+        }
         Anhxa();
         ActionBar();
         ActionViewFlipper();
@@ -122,8 +130,13 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(usb);
                         break;
                     case 7:
-                        Intent lichsu = new Intent(getApplicationContext(),XemDonActivity.class);
-                        startActivity(lichsu);
+                        if (Utils.user_current.getTendangnhap() != null){
+                            Intent lichsu = new Intent(getApplicationContext(),XemDonActivity.class);
+                            startActivity(lichsu);
+                        } else {
+                            Intent lichsu = new Intent(getApplicationContext(),LichSuTrongActivity.class);
+                            startActivity(lichsu);
+                        }
                         break;
                     case 8:
                         Intent lienhe = new Intent(getApplicationContext(),LienHeActivity.class);
@@ -223,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigationviewmhc);
         listViewmanhinhchinh = findViewById(R.id.listviewmhc);
         dangnhapdangky = findViewById(R.id.dangnhapdangky);
+        imgsearch = findViewById(R.id.imgsearch);
         badge = findViewById(R.id.menu_sl);
         frameLayout = findViewById(R.id.frame_giohang);
         mangloaisp = new ArrayList<>();
@@ -263,6 +277,32 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
                 startActivity(intent);
+            }
+        });
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Paper.book().delete("User");
+                Utils.user_current.setTendangnhap(null);
+                Toast.makeText(getApplicationContext(), "Đăng xuất tài khoản thành công", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                if (Utils.user_current.getTendangnhap() != null)
+                {
+                    dangnhapdangky.setVisibility(View.GONE);
+                    txtdangnhap.setVisibility(View.GONE);
+                    txtdangky.setVisibility(View.GONE);
+                    dangxuat.setVisibility(View.VISIBLE);
+
+                }
+                finish();
             }
         });
     }

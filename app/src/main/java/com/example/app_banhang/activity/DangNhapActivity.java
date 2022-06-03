@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.app_banhang.R;
+import com.example.app_banhang.model.UserModel;
 import com.example.app_banhang.retrofit.ApiBanHang;
 import com.example.app_banhang.retrofit.RetrofitClient;
 import com.example.app_banhang.ultil.Utils;
@@ -110,10 +111,15 @@ public class DangNhapActivity extends AppCompatActivity {
                                 isLogin = true;
                                 Paper.book().write("islogin", isLogin);
                                 Utils.user_current = userModel.getResult().get(0);
+                                // Luu lai thong tin nguoi dung
+                                Paper.book().write("User", userModel.getResult().get(0));
                                 Toast.makeText(getApplicationContext(),"Đăng nhập thành công", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 finish();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(),"Sai tên đăng nhập hoặc mật khẩu", Toast.LENGTH_LONG).show();
                             }
 
                         },

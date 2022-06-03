@@ -4,9 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C66BED81"
     android:orientation="vertical"
     tools:context=".activity.ResetpassActivity">
+    <androidx.appcompat.widget.Toolbar
+        app:title="Lấy lại mật khẩu"
+        app:titleTextColor="#FFFF"
+        android:background="#0A7825"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

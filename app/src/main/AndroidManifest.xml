@@ -14,37 +14,10 @@
         android:theme="@style/Theme.App_BanHang"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.XemDonActivity"
+            android:name=".activity.LichSuTrongActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ThanhToanActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ResetpassActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.DangNhapActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.DangKyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.GioHangActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ChiTietActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.InfoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LienHeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoaiSPActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,6 +25,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.XemDonActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ThanhToanActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ResetpassActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DangNhapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DangKyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.GioHangActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ChiTietActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.InfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.LienHeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.LoaiSPActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>
