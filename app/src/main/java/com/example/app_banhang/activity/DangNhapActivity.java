@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class DangNhapActivity extends AppCompatActivity {
     Button buttondn;
     ApiBanHang apiBanHang;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
+    boolean isLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,24 +68,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     //Lưu đang nhập
                     Paper.book().write("Tên đăng nhập", str_tendangnhap);
                     Paper.book().write("Mật khẩu", str_password);
-                    compositeDisposable.add(apiBanHang.dangNhap(str_tendangnhap, str_password)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(
-                                    userModel -> {
-                                        if (userModel.isSuccess()){
-                                            Utils.user_current = userModel.getResult().get(0);
-                                            Toast.makeText(getApplicationContext(),"Đăng nhập thành công", Toast.LENGTH_LONG).show();
-                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-
-                                    },
-                                    throwable -> {
-                                        Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-                            ));
+                    dangnhap(str_tendangnhap, str_password);
                 }
             }
         });
@@ -101,9 +86,42 @@ public class DangNhapActivity extends AppCompatActivity {
         if (Paper.book().read("Tên đăng nhập") != null && Paper.book().read("Mật khẩu") != null){
             taikhoan.setText(Paper.book().read("Tên đăng nhập"));
             matkhau.setText(Paper.book().read("Mật khẩu"));
+            if (Paper.book().read("islogin") != null){
+                boolean flag = Paper.book().read("islogin");
+                if (flag){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Xét tự dộng đăng nhập
+                            //dangnhap(Paper.book().read("Tên đăng nhập"), Paper.book().read("Mật khẩu"));
+                        }
+                    },1000);
+                }
+            }
         }
     }
+    private void dangnhap(String tendangnhap, String password) {
+        compositeDisposable.add(apiBanHang.dangNhap(tendangnhap, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        userModel -> {
+                            if (userModel.isSuccess()){
+                                isLogin = true;
+                                Paper.book().write("islogin", isLogin);
+                                Utils.user_current = userModel.getResult().get(0);
+                                Toast.makeText(getApplicationContext(),"Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
 
+                        },
+                        throwable -> {
+                            Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                ));
+    }
     @Override
     protected void onResume() {
         super.onResume();

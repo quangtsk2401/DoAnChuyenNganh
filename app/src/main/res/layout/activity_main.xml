@@ -48,7 +48,6 @@
                     android:textStyle="bold" />
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
-                android:id="@+id/dangnhapdangky"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -60,8 +59,9 @@
                     android:text="Đăng nhập"
                     android:textStyle="bold"
                     android:textColor="#FF1F1F"
-                    android:layout_marginStart="130dp"/>
+                    android:layout_marginStart="120dp"/>
                 <TextView
+                    android:id="@+id/dangnhapdangky"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -74,6 +74,15 @@
                     android:text="Đăng ký"
                     android:textStyle="bold"
                     android:textColor="#FF1F1F"/>
+                <TextView
+                    android:id="@+id/maindangxuat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đăng xuất tài khoản "
+                    android:layout_marginStart="165dp"
+                    android:textStyle="bold"
+                    android:textColor="#FF1F1F"
+                    android:visibility="gone"/>
             </LinearLayout>
             <ViewFlipper
                 android:id="@+id/viewflippermhc"

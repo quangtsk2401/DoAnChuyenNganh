@@ -48,6 +48,25 @@ public class LoaiSPActivity extends AppCompatActivity {
         ActionToolBar();
         getData(page);
         addEventLoad();
+        if(loai==1){
+            isLoading=false;
+            toolbar.setTitle("Gaming Phone");
+        }
+        else {
+            isLoading=true;
+            if(loai==2){
+                toolbar.setTitle("PC| Máy bộ");
+            }else if(loai==3){
+                toolbar.setTitle("Laptop");
+            }else if(loai==4){
+                toolbar.setTitle("Linh kiện");
+            }else if(loai==5){
+                toolbar.setTitle("Gaming Gear");
+            }
+            else if(loai==6){
+                toolbar.setTitle("USB");
+            }
+        }
     }
 
     private void addEventLoad()

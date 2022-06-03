@@ -60,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
     List<SanPhamMoi> mangSpMoi;
     SanPhamMoiAdapter spAdapter;
     FrameLayout frameLayout;
-    TextView txtdangky,txtdangnhap;
-    LinearLayout dangnhapdangky;
+    TextView txtdangky,txtdangnhap, dangxuat, dangnhapdangky;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,10 +122,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(usb);
                         break;
                     case 7:
+                        Intent lichsu = new Intent(getApplicationContext(),XemDonActivity.class);
+                        startActivity(lichsu);
+                        break;
+                    case 8:
                         Intent lienhe = new Intent(getApplicationContext(),LienHeActivity.class);
                         startActivity(lienhe);
                         break;
-                    case 8:
+                    case 9:
                         Intent infor = new Intent(getApplicationContext(),InfoActivity.class);
                         startActivity(infor);
                         break;
@@ -208,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
     private void Anhxa() {
         txtdangky = findViewById(R.id.maindangky);
         txtdangnhap = findViewById(R.id.maindangnhap);
+        dangxuat = findViewById(R.id.maindangxuat);
         toolbar = findViewById(R.id.toolbarmhc);
         badge = findViewById(R.id.menu_sl);
         drawerLayout = findViewById(R.id.drawerlayoutmhc);
@@ -243,6 +247,9 @@ public class MainActivity extends AppCompatActivity {
         if (Utils.user_current.getTendangnhap() != null)
         {
             dangnhapdangky.setVisibility(View.GONE);
+            txtdangnhap.setVisibility(View.GONE);
+            txtdangky.setVisibility(View.GONE);
+            dangxuat.setVisibility(View.VISIBLE);
         }
         txtdangky.setOnClickListener(new View.OnClickListener() {
             @Override

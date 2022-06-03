@@ -35,6 +35,7 @@ public class GioHangActivity extends AppCompatActivity {
     Button btnmuahang, tieptucmuahang, thanhtoan;
     GioHangAdapter adapter;
     LinearLayout layout1;
+    long tongtiensp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class GioHangActivity extends AppCompatActivity {
     }
 
     private void tinhTongTien() {
-        long tongtiensp = 0;
+        tongtiensp = 0;
         for (int i=0; i<Utils.manggiohang.size();i++){
             tongtiensp = tongtiensp + (Utils.manggiohang.get(i).getGia()*Utils.manggiohang.get(i).getSoluong());
         }
@@ -89,12 +90,19 @@ public class GioHangActivity extends AppCompatActivity {
         thanhtoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
-                startActivity(intent);
+                if(Utils.user_current.getTendangnhap() == null){
+                    Toast.makeText(getApplicationContext(), "Bạn chưa đăng nhập", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), DangNhapActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), ThanhToanActivity.class);
+                    intent.putExtra("tongtien", tongtiensp);
+                    startActivity(intent);
+                }
             }
         });
     }
-
     @SuppressLint("WrongViewCast")
     private void initView() {
         giohangtrong = findViewById(R.id.txtgiohangtrong);

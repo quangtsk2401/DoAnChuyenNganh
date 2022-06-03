@@ -6,17 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
     android:layout_marginLeft="15dp">
-
     <TextView
         android:id="@+id/item_tensp"
-        android:layout_width="357dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:text="LoaiSP"
-        android:textSize="25dp"></TextView>
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:textSize="25dp" />
 </LinearLayout>
