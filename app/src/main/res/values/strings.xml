@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">App_BanHang</string>
     <string name="sennyshop">SenNyShop</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

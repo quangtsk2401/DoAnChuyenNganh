@@ -139,12 +139,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case 8:
-                        Intent lienhe = new Intent(getApplicationContext(),LienHeActivity.class);
-                        startActivity(lienhe);
+                        if (Utils.user_current.getTendangnhap() != null){
+                            Intent thongtin = new Intent(getApplicationContext(),InfoActivity.class);
+                            startActivity(thongtin);
+                        } else {
+                            Intent thongtin = new Intent(getApplicationContext(),InfoTrongActivity.class);
+                            startActivity(thongtin);
+                        }
+
                         break;
                     case 9:
-                        Intent infor = new Intent(getApplicationContext(),InfoActivity.class);
-                        startActivity(infor);
+                        Intent lienhe = new Intent(getApplicationContext(),MapsActivity.class);
+                        startActivity(lienhe);
                         break;
                 }
             }
