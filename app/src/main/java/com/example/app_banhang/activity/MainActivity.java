@@ -237,7 +237,6 @@ public class MainActivity extends AppCompatActivity {
         listViewmanhinhchinh = findViewById(R.id.listviewmhc);
         dangnhapdangky = findViewById(R.id.dangnhapdangky);
         imgsearch = findViewById(R.id.imgsearch);
-        badge = findViewById(R.id.menu_sl);
         frameLayout = findViewById(R.id.frame_giohang);
         mangloaisp = new ArrayList<>();
         mangSpMoi = new ArrayList<>();
@@ -249,7 +248,13 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < Utils.manggiohang.size(); i++){
                     totalItem= totalItem + Utils.manggiohang.get(i).getSoluong();
                 }
+            if(Utils.manggiohang.size() == 0){
+                badge.setVisibility(View.GONE);
+            }
+            else {
+                badge.setVisibility(View.VISIBLE);
                 badge.setText(String.valueOf(Utils.manggiohang.size()));
+            }
         }
         frameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -314,7 +319,13 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < Utils.manggiohang.size(); i++){
             totalItem= totalItem + Utils.manggiohang.get(i).getSoluong();
         }
-        badge.setText(String.valueOf(Utils.manggiohang.size()));
+        if(Utils.manggiohang.size() == 0){
+            badge.setVisibility(View.GONE);
+        }
+        else {
+            badge.setVisibility(View.VISIBLE);
+            badge.setText(String.valueOf(Utils.manggiohang.size()));
+        }
     }
 
     private boolean isConnect (Context context){

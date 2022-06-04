@@ -84,7 +84,13 @@ public class ChiTietActivity extends AppCompatActivity {
             gioHang.setHinhsp(sanPhamMoi.getHinhanh());
             Utils.manggiohang.add(gioHang);
         }
-        badge.setText(String.valueOf(Utils.manggiohang.size()));
+        if(Utils.manggiohang.size() == 0){
+            badge.setVisibility(View.GONE);
+        }
+        else {
+            badge.setVisibility(View.VISIBLE);
+            badge.setText(String.valueOf(Utils.manggiohang.size()));
+        }
     }
 
     private void initData() {
@@ -121,7 +127,13 @@ public class ChiTietActivity extends AppCompatActivity {
             for (int i = 0; i < Utils.manggiohang.size(); i++){
                 totalItem= totalItem + Utils.manggiohang.get(i).getSoluong();
             }
-            badge.setText(String.valueOf(Utils.manggiohang.size()));
+            if(Utils.manggiohang.size() == 0){
+                badge.setVisibility(View.GONE);
+            }
+            else {
+                badge.setVisibility(View.VISIBLE);
+                badge.setText(String.valueOf(Utils.manggiohang.size()));
+            }
         }
     }
     private void ActionToolBar() {
@@ -143,7 +155,13 @@ public class ChiTietActivity extends AppCompatActivity {
             for (int i = 0; i < Utils.manggiohang.size(); i++) {
                 totalItem = totalItem + Utils.manggiohang.get(i).getSoluong();
             }
-            badge.setText(String.valueOf(Utils.manggiohang.size()));
+            if(Utils.manggiohang.size() == 0){
+                badge.setVisibility(View.GONE);
+            }
+            else {
+                badge.setVisibility(View.VISIBLE);
+                badge.setText(String.valueOf(Utils.manggiohang.size()));
+            }
         }
     }
 }
